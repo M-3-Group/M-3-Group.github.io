@@ -754,6 +754,16 @@ body {
     text-align: justify;
 }
 
+/* Restore vertical padding on member pages */
+.page-member section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.page-member section {
+    padding: 80px 20px;
+}
+
 /* =========================================
    Contact section: file drop zone
    ========================================= */
