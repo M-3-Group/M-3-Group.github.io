@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3 Group</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
+</head>
+<body class="page-member">
+   <nav class="nav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+            <a href="../main.html#accueil">
+                <img src="../images/logo/LOGO.png" alt="Logo" class="logo-img">
+            </a>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-links">
+                <li><a href="../main.html#welcome">Home</a></li>
+                <li><a href="../main.html#news">News</a></li>
+                 <li><a href="../main.html#equipes">Team</a></li>
+                <li><a href="../main.html#publications">Publications</a></li>
+                <li><a href="../main.html#opportunities">Opportunities</a></li>
+                <li><a href="../main.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="leon_video.mov" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo en fond.
+        </video>
+        <div class="hero-content">
+            <h1>Leon Espinosa</h1>
+            <p>Research Engineer</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="content-container">
+            <div class="stat-card fade-in">
+                <div class="stat-label">
+                    My scientific background is based on a thesis in cardiovascular electrophysiology, a
+                    post-doc at INSERM, and an industrial experience at Nikon France. These experiences
+                    allowed me to acquire a solid expertise in both scientific instrumentation and
+                    programming (Java, Python, R), enriched by the continuous training of the CNRS. <br>
+                    Since I joined CNRS in 2005, I have held management responsibilities of
+                    technological platforms in microscopy, image analysis and instrumentation, in particular
+                    at the Laboratoire des Rickettsies (Faculty of Medicine of the Timone) from 2005 to
+                    2010.<br>
+                    In 2010 I joined the Laboratory of Bacterial Chemistry where I
+                    first piloted a common service dedicated to microscopy image analysis and high screening
+                    debit. My missions include the implementation of advanced techniques (FRET, FRAP, bi-
+                    photon, etc.), the development of free software for image processing, as well as
+                    the analysis and quantification of data for various research projects. I was Deputy Director of the laboratory (2012 2017), responsible for common services and
+                    HR management.
+                    From 2018 to 2024, I led a scientific services team dedicated to instrumentation and
+                    to the data analysis in microbiology (IAM team), composed of 5 permanent members. 
+                    Within my team, I ensured the coordination of collaborative projects.<br>
+                    In 2025 I introduced a significant change in my career. In agreement with the
+                    laboratory I left the direction of the IAM team and joined the M3G team " Mathematical
+                    Modeling of the Microbiomes " led by Dr. Florence Bansept. Within the team the
+                    activities that have been entrusted to me are: software development for applications and
+                    daily management of the team (financial management, purchasing, reception of interns and students).
+                    
+                
+                                <div class="social-icons">
+                                    <a href="https://www.linkedin.com/in/leon-espinosa-8b31b571/" target="_blank" style="color: #0077B5;">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://scholar.google.com/citations?user=PxiBLAoAAAAJ&hl=fr" target="_blank" style="color: #4285F4;">
+                                        <i class="fas fa-graduation-cap"></i> 
+                                    </a>
+                                </div>
+                        
+                </div>
+            </div>
+            <div class="image-container fade-in">
+                <img src="leon.jpg" alt="Leon Espinosa" class="member-photo">
+
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="partners-banner">
+           
+            <a href="https://www.cnrs.fr" target="_blank" title="Visiter le site du CNRS">
+                <img src="../images/logo/cnrs.png" alt="CNRS">
+            </a>
+            <a href="https://www.univ-amu.fr/" target="_blank" title="Visiter le site de l'amu">
+                <img src="../images/logo/amu.png" alt="Aix Marseille Université">
+            </a>
+            <a href="https://www.imm.cnrs.fr/" target="_blank" title="Visiter le site de l'imm">
+                <img src="../images/logo/imm.png" alt="IMM">
+            </a>
+            <a href="https://centuri-livingsystems.org/" target="_blank" title="Visiter le site de Centuri">
+                <img src="../images/logo/centuri.png" alt="Centuri">
+            </a>
+            <a href="https://www.evolbio.mpg.de/2169/en" target="_blank" title="Visiter le site de MaxPlanque">
+            <img src="../images/logo/maxplanck.png" alt="MaxPlanque">
+            </a>
+        </div>
+        <p style="margin-top: 3rem;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">&copy; 2025 M3G with special thanks to Sherine & Myriam</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

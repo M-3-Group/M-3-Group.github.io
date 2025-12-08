@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3 Group</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
+</head>
+<body class="page-member">
+   <nav class="nav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+            <a href="../main.html#accueil">
+                <img src="../images/logo/LOGO.png" alt="Logo" class="logo-img">
+            </a>
+            </div>
+            
+            <!-- Navigation links -->
+            <ul class="nav-links">
+                <li><a href="../main.html#welcome">Home</a></li>
+                <li><a href="../main.html#news">News</a></li>
+                 <li><a href="../main.html#equipes">Team</a></li>
+                <li><a href="../main.html#publications">Publications</a></li>
+                <li><a href="../main.html#opportunities">Opportunities</a></li>
+                <li><a href="../main.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="florence_video.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo en fond.
+        </video>
+        <div class="hero-content">
+            <h1>Florence Bansept</h1>
+            <p>Group leader</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="content-container">
+            <div class="stat-card fade-in">
+                <div class="stat-label">
+                    Before I fell into biology, I studied statistical physics and a little bit of musicology at École Normale Supérieure in Paris.
+                    During my PhD at Sorbonne Université, I worked on several aspects of bacterial population dynamics and their interactions with the immune system in the gut, at the onset of infection.
+                    During my postdoc at the Max Planck Institute for Evolutionary Biology in Plön, Germany, my research took a more evolutionary direction. I developed models investigating 
+                    the selection on the life-history traits of host-associating microbes, importing methods from demography into the field of microbiome research. 
+                    <br>
+                    In March 2023, I started my own group at the Turing Center for Living Systems in Marseille, France. With the wonderful team I have the privilege to be surrounded by,
+                    we investigate the mathematical principles underlying microbiobial community dynamics, with projects ranging from molecular aspects of bacterial stress responses to host-population-scale questions.
+                    <br>
+                    While I currently do not have any teaching duty, I see transmission as an essential part of my job, and particularly enjoy helping scientists-in-training develop their critical thinking. 
+                    When not in the lab, you can most often find me dancing Lindy Hop or in an opera hall - whether in the public or, occasionally, on stage!
+                
+                    <div class="social-icons" style="margin-top: 1rem;">
+                        <a href="https://https://flobansept.github.io/" target="_blank" style="color: #4100aa;">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/florence-bansept-323ba7121/" target="_blank" style="color: #0077B5;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=HcfhwgwAAAAJ&hl=fr&oi=sra" target="_blank" style="color: #4285F4;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://bsky.app/profile/florencebansept.bsky.social" target="_blank" style="color: #0288D1;">
+                            <i class="fab fa-bluesky"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Florence-Bansept-2" target="_blank" style="color: #00CCBB;">
+                            <i class="fab fa-researchgate"></i>
+                        </a>
+                        <a href="https://orcid.org/0000-0003-0562-9222" target="_blank" style="color: #A6CE39;">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                    </div>   
+                        
+                </div>
+            </div>
+            <div class="image-container fade-in">
+                <img src="florence.jpg" alt="Florence Bansept" class="member-photo">
+
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="partners-banner">
+           
+            <a href="https://www.cnrs.fr" target="_blank" title="Visiter le site du CNRS">
+                <img src="../images/logo/cnrs.png" alt="CNRS">
+            </a>
+            <a href="https://www.univ-amu.fr/" target="_blank" title="Visiter le site de l'amu">
+                <img src="../images/logo/amu.png" alt="Aix Marseille Université">
+            </a>
+            <a href="https://www.imm.cnrs.fr/" target="_blank" title="Visiter le site de l'imm">
+                <img src="../images/logo/imm.png" alt="IMM">
+            </a>
+            <a href="https://centuri-livingsystems.org/" target="_blank" title="Visiter le site de Centuri">
+                <img src="../images/logo/centuri.png" alt="Centuri">
+            </a>
+            <a href="https://www.evolbio.mpg.de/2169/en" target="_blank" title="Visiter le site de MaxPlanque">
+            <img src="../images/logo/maxplanck.png" alt="MaxPlanque">
+            </a>
+        </div>
+        <p style="margin-top: 3rem;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">&copy; 2025 M3G with special thanks to Sherine & Myriam</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

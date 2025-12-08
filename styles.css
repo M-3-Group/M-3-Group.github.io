@@ -1,0 +1,939 @@
+/* =========================================
+   Root, reset & global layout
+   ========================================= */
+
+:root {
+    --nav-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    scroll-margin-top: var(--nav-height);
+}
+
+body {
+    padding-top: var(--nav-height);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.2;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   Logo & navigation
+   ========================================= */
+
+.logo a {
+    display: inline-block;
+}
+
+.logo a:hover img {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-img {
+    height: 40px;
+    width: 45px;
+    margin-right: 10px;
+}
+
+/* Navigation bar */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(223, 240, 237, 0.951);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 3000px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+}
+
+.nav-links li {
+    position: relative;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: 1px solid #ccc;
+}
+
+.nav-links li:first-child {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: linear-gradient(45deg, #01aa9c, #00d2c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =========================================
+   Hero section (video + title)
+   ========================================= */
+
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="300" cy="700" r="80" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: floating 20s ease-in-out infinite;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Call-to-action buttons (News "More", Contact "Send") */
+.cta-button {
+    background: #00979a;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite, fadeInUp 1s ease-out 0.6s both;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: auto;
+    display: block;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   Generic sections & cards
+   ========================================= */
+
+.section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: #00979a;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Stat-style cards used for news, opportunities, member pages */
+.stat-card {
+    background: #fff;
+    padding: 2rem;
+    width: 50%;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    z-index: 10;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 1.1rem;
+    display: block;
+}
+
+/* Content container: generic 2-column layout */
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+/* Fade-in utility (colour + font size also used) */
+.fade-in {
+    color: #666;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   Welcome section (text + logo + photo strip)
+   ========================================= */
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Main welcome card: text + logo */
+.welcome-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcome-text {
+    flex: 2;
+    text-align: justify;
+}
+
+.welcome-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-logo img {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Links in welcome text */
+.welcome-text a {
+    color: #00979a;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 151, 154, 0.3);
+}
+
+.welcome-text a:hover {
+    border-bottom-color: #006b6f;
+    color: #006b6f;
+}
+
+/* Horizontal scrollable photo strip below welcome card */
+.photo-strip {
+    margin-top: 2.5rem;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.photo-strip-inner {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    width: max-content;
+    margin: 0 auto;              /* center when narrower than viewport */
+}
+
+.photo-strip-inner img {
+    height: 260px;
+    flex: 0 0 auto;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   Team grid (home page)
+   ========================================= */
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 3rem;
+}
+
+.neon-img {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    text-align: center;
+    min-width: 180px;
+}
+
+.neon-img:hover {
+    transform: scale(1.05);
+}
+
+/* Email line under each member */
+.member-email {
+    font-size: 0.85rem;
+    color: #acacac;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: text;
+}
+
+.member-email i {
+    color: #acacac;
+    font-size: 0.9rem;
+}
+
+/* Social icons (home + member pages) */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.social-icons a {
+    color: #666;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #333;
+}
+
+.social-icons img {
+    width: 28px;
+    height: 28px;
+    filter: grayscale(100%);
+}
+
+/* =========================================
+   Alumni section
+   ========================================= */
+
+#alumni {
+    background: #fff;
+    color: #000;
+    padding: 0 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.alumni-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 0.2;
+}
+
+.alumni-member {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.7fr;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+}
+
+.alumni-name,
+.alumni-role,
+.alumni-dates {
+    margin: 0;
+    padding: 0;
+}
+
+.alumni-name {
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   Publications section
+   ========================================= */
+
+.publication-list {
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.publication-item {
+    background: #fff;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border-left: 4px solid #00979a;
+}
+
+.publication-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.publication-date {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+}
+
+.publication-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.publication-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.publication-link:hover {
+    color: #e74c3c;
+}
+
+/* Layout when a publication has a figure */
+.publication-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.publication-text {
+    flex: 1 1 260px;
+    text-align: left;
+}
+
+.publication-authors {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.publication-summary {
+    margin-bottom: 0.75rem;
+    color: #555;
+}
+
+.publication-meta {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Figure column */
+.publication-figure {
+    flex: 0 0 260px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.publication-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.publication-figure-caption {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-top: 0.3rem;
+}
+
+/* Slightly tighter vertical padding for preprint card */
+.publication-item.publication-preprint {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+/* =========================================
+   Home-page News section (short list + "More")
+   ========================================= */
+
+#news .content-container {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    z-index: 1;
+}
+
+#news .stat-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 30px;
+    text-align: left;
+    z-index: 10;
+}
+
+#news .stat-label ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+#news .stat-label li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+#news .stat-label li:last-child {
+    margin-bottom: 0;
+}
+
+#news .stat-label li strong {
+    display: inline-block;
+    min-width: 140px;
+    white-space: nowrap;
+    text-align: right;
+    color: #555;
+    font-weight: 700;
+}
+
+/* =========================================
+   Opportunities section
+   ========================================= */
+
+#opportunities .content-container {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    z-index: 1;
+}
+
+#opportunities .stat-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+#opportunities .stat-label {
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#opportunities .stat-label p,
+#opportunities .stat-label li {
+    text-align: justify;
+}
+
+#opportunities ul {
+    margin-left: 2rem;
+    padding-left: 0;
+}
+
+#opportunities ul li {
+    padding-left: 1rem;
+}
+
+/* =========================================
+   Full News page (news.html)
+   ========================================= */
+
+.page-news #news {
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+.page-news .news-wrapper {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 1rem;
+}
+
+.page-news .news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Default: one row per item (date + text) */
+.page-news .news-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e3ecea;
+    line-height: 1.5;
+}
+
+.page-news .news-list li:last-child {
+    border-bottom: none;
+}
+
+.page-news .news-date {
+    min-width: 140px;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #555;
+}
+
+.page-news .news-text {
+    flex: 1;
+}
+
+/* Items that have a big photo */
+.page-news .news-list li.has-photo {
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.page-news .news-list li.has-photo .news-main-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.page-news .news-img {
+    width: 360px;
+    max-width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    align-self: center;
+    margin-left: calc(140px + 1.5rem);
+}
+
+/* =========================================
+   Member pages (page-member)
+   ========================================= */
+
+.page-member .image-container {
+    flex: 0 0 260px;
+    min-width: 220px;
+}
+
+.page-member .member-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+}
+
+.page-member .social-icons {
+    justify-content: center;
+}
+
+.page-member .stats .content-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.page-member .stats .stat-card {
+    flex: 1 1 320px;
+    max-width: 700px;
+    width: auto;
+    text-align: justify;
+}
+
+.page-member .stats .image-container {
+    flex: 0 0 320px;
+    max-width: 380px;
+    min-width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-member .stats .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.page-member .stat-label {
+    text-align: justify;
+}
+
+/* =========================================
+   Contact section: file drop zone
+   ========================================= */
+
+.drop-zone {
+    border: 2px dashed #aaa;
+    border-radius: 50px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    background-color: #fff;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin: auto;
+    display: block;
+}
+
+.drop-zone.dragover {
+    background-color: #f0f0f0;
+    border-color: #333;
+}
+
+.drop-zone input {
+    display: none;
+}
+
+/* Add a margin to the Send button in contact form */
+#contact-form button.cta-button {
+    margin-top: 20px;
+}
+
+/* =========================================
+   Partners banner & footer
+   ========================================= */
+
+.partners-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding: 5px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.partners-banner img {
+    height: 60px;
+    width: auto;
+    transition: filter 0.3s ease;
+    flex-shrink: 0;
+}
+
+.partners-banner img:hover {
+    filter: grayscale(0%);
+}
+
+.footer {
+    background-image: url(images/foott.jpg);
+    color: #a6e0e3;
+    text-align: center;
+    padding: 3rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   Floating math/biology "emoji" animation
+   ========================================= */
+
+.emoji {
+    position: fixed;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.emoji:nth-child(odd) {
+    animation-duration: 8s;
+}
+
+.emoji:nth-child(even) {
+    animation-duration: 12s;
+}
+
+/* =========================================
+   Animations
+   ========================================= */
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* =========================================
+   Responsive adjustments
+   ========================================= */
+
+@media (max-width: 900px) {
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-text {
+        text-align: justify;
+    }
+
+    .page-member .stats .content-container {
+        flex-direction: column;
+    }
+
+    .page-member .stats .stat-card,
+    .page-member .stats .image-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Full news page & images on very small screens */
+@media (max-width: 600px) {
+    .page-news .news-list li,
+    .page-news .news-list li.has-photo {
+        flex-direction: column;
+    }
+
+    .page-news .news-date {
+        text-align: left;
+    }
+
+    .page-news .news-list li.has-photo .news-main-row {
+        flex-direction: column;
+    }
+
+    .page-news .news-img {
+        margin-left: 0;
+    }
+}
