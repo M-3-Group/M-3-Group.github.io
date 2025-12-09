@@ -279,8 +279,9 @@ body {
     max-width: 240px;
     width: 100%;
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    border-radius: 0;     /* remove rounded frame */
+    box-shadow: none;     /* remove shadow */
+    background: none;     /* ensure no background */
 }
 
 /* Links in welcome text */
@@ -787,14 +788,43 @@ body {
     border-color: #333;
 }
 
-.drop-zone input {
-    display: none;
+/* Equal-height columns in Contact section */
+#contact .content-container {
+    justify-content: center;
+    align-items: stretch;   /* same height for both columns */
 }
 
-/* Add a margin to the Send button in contact form */
-#contact-form button.cta-button {
-    margin-top: 20px;
+#contact .contact-columns > .contact-column {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
 }
+
+/* Map fills its column */
+#contact .contact-column iframe {
+    flex: 1;
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* Make the form stretch to full column height as well */
+#contact #contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Let the drop zone + button sit nicely inside */
+#contact #contact-form .drop-zone {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact #contact-form .cta-button {
+    align-self: center;
+}
+
 
 /* =========================================
    Partners banner & footer
